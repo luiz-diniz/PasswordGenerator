@@ -11,3 +11,6 @@ This is a password generator
  * Click on "Generate"
  * Click on "Copy"
  * That's it! :)
+
+## Roadmap
+ * Generate the password using the API and command line
