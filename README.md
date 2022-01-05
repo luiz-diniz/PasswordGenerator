@@ -18,7 +18,7 @@ This is a password generator
  * Create a MSI Installer for the WindowsForms version
 
 ## Contributing
-Any ideias and bug fixes are welcome. Just submit your pull request =)
+Any ideias or bug fixes are welcome. Just submit your pull request =)
 
 ## Extra Info
 This project is part of the 2022 #CSharpChallenge created by @TimCorey, that encourage people to code their own projects.
