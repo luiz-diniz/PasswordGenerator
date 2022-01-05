@@ -29,6 +29,7 @@ namespace PasswordGenerator.App
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainApp));
             this.gpOptions = new System.Windows.Forms.GroupBox();
             this.lblMaxSize = new System.Windows.Forms.Label();
             this.txtMaxSize = new System.Windows.Forms.TextBox();
@@ -169,6 +170,7 @@ namespace PasswordGenerator.App
             this.ClientSize = new System.Drawing.Size(446, 251);
             this.Controls.Add(this.gpPassword);
             this.Controls.Add(this.gpOptions);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordGenerator";
