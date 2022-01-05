@@ -3,7 +3,7 @@
 This is a password generator
 
 ## Features
- * Let the user select which elements the password will have: Numbers, lowercase letters, uppercase letters and so on....
+ * This app generate a password based on the user's preference.
 
 ## How To Use
  * Select which elements you want on the password
