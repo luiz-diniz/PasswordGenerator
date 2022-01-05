@@ -44,7 +44,8 @@ namespace PasswordGenerator.App
 
         private bool ValidateUserInput()
         {
-            if (String.IsNullOrEmpty(txtMaxSize.Text) || Convert.ToInt32(txtMaxSize.Text) <= 0)
+            var output = 0;
+            if (String.IsNullOrEmpty(txtMaxSize.Text) || !int.TryParse(txtMaxSize.Text, out output) || Convert.ToInt32(txtMaxSize.Text) <= 0)
                 throw new Exception("Invalid number input.\nMax size must be higher than zero.");
 
             if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)

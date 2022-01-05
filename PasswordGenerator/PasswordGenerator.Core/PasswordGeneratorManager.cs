@@ -9,22 +9,19 @@ namespace PasswordGenerator.Core
     {
         public string Generate(PasswordOptions passwordOptions)
         {
-            string numericChars = "";
-            string upperChars = "";
-            string lowerChars = "";
-            string specialChars = "";
+            var generatedStringResult = new StringBuilder();
 
             //characters numbers based on the ascii table
             if(passwordOptions.Numbers)
-                numericChars =  GenerateCharacters(0, 9, passwordOptions.MaxSize, true).ToString();
+                generatedStringResult.Append(GenerateCharacters(0, 9, passwordOptions.MaxSize, true).ToString());
             if(passwordOptions.SpecialCharacters)
-                specialChars = GenerateCharacters(33, 43, passwordOptions.MaxSize, false).ToString();
+                generatedStringResult.Append(GenerateCharacters(33, 43, passwordOptions.MaxSize, false).ToString());
             if(passwordOptions.UpperCaseLetters)
-                upperChars = GenerateCharacters(65, 90, passwordOptions.MaxSize, false).ToString();
+                generatedStringResult.Append(GenerateCharacters(65, 90, passwordOptions.MaxSize, false).ToString());
             if(passwordOptions.LowerCaseLetters)
-                lowerChars = GenerateCharacters(97, 122, passwordOptions.MaxSize, false).ToString();
+                generatedStringResult.Append(GenerateCharacters(97, 122, passwordOptions.MaxSize, false).ToString());
 
-            var appendedCharacters = (numericChars + upperChars + lowerChars + specialChars).ToArray();
+            var appendedCharacters = generatedStringResult.ToString().ToArray();
 
             return RandomizeCharacters(appendedCharacters).Substring(0, passwordOptions.MaxSize);
         }
