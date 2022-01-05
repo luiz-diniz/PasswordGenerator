@@ -13,4 +13,4 @@ This is a password generator
  * That's it! :)
 
 ## Roadmap
- * Generate the password using the API and command line
+ * Generate the password using an API and a command line
