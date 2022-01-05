@@ -2,9 +2,8 @@
 
 namespace PasswordGenerator.Models
 {
-    public class Password
+    public class PasswordOptions
     {
-        public string PasswordString { get; set; }
         public int MaxSize { get; set; }
         public bool Numbers { get; set; }
         public bool SpecialCharacters { get; set; }
