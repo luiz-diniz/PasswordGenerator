@@ -6,6 +6,7 @@ This is a password generator
  * This app generate a password based on the user's preference.
 
 ## How To Use
+ * Open the "Version" folder, execute the PasswordGenerator.exe
  * Select which elements you want on the password
  * Define the max size of the password
  * Click on "Generate"
@@ -14,3 +15,4 @@ This is a password generator
 
 ## Roadmap
  * Generate the password using an API and a command line
+ * Create a MSI Installer for the WindowsForms version
