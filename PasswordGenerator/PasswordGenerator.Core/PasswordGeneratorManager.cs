@@ -1,5 +1,6 @@
 ﻿using PasswordGenerator.Models;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace PasswordGenerator.Core
@@ -23,11 +24,24 @@ namespace PasswordGenerator.Core
             if(passwordOptions.LowerCaseLetters)
                 lowerChars = GenerateCharacters(97, 122, passwordOptions.MaxSize, false).ToString();
 
-            //TODO: Mix characters types together 
-            //logic...
+            var appendedCharacters = (numericChars + upperChars + lowerChars + specialChars).ToArray();
 
-            //this is just a test
-            return numericChars + upperChars + lowerChars + specialChars;
+            return RandomizeCharacters(appendedCharacters).Substring(0, passwordOptions.MaxSize);
+        }
+
+        private string RandomizeCharacters(char[] text)
+        {
+            var random = new Random();
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                var randomIndex = random.Next(0, text.Length);
+                var temp = text[randomIndex];
+                text[randomIndex] = text[i];
+                text[i] = temp;
+            }
+
+            return new string(text);
         }
 
         private string GenerateCharacters(int initialRange, int finalRange, int size, bool isNumber)
