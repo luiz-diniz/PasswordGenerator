@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PasswordGenerator.App
 {
-    public partial class Form1 : Form
+    public partial class MainApp : Form
     {
-        public Form1()
+        public MainApp()
         {
             InitializeComponent();
         }
