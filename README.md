@@ -18,4 +18,4 @@ This is a password generator
  * Create a MSI Installer for the WindowsForms version
 
 ## Extra Info
-This project is part of the 2022 #CSharpChallenge created by @TimCorey, that encourage people to code small their own projects.
+This project is part of the 2022 #CSharpChallenge created by @TimCorey, that encourage people to code their own projects.
