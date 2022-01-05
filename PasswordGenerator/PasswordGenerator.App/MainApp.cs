@@ -14,6 +14,7 @@ namespace PasswordGenerator.App
             InitializeComponent();
 
             _passwordGenerator = new PasswordGeneratorManager();
+            btnCopy.Enabled = false;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace PasswordGenerator.App
                     var password = _passwordGenerator.Generate(passwordOptions);
 
                     txtPassword.Text = password.ToString();
+                    btnCopy.Enabled = true;
                 }                
             }
             catch(Exception ex)
@@ -62,6 +64,11 @@ namespace PasswordGenerator.App
             passwordOptions.LowerCaseLetters = cbLowercase.Checked;
 
             return passwordOptions;
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPassword.Text);
         }
     }
 }

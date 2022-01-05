@@ -39,6 +39,7 @@ namespace PasswordGenerator.App
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.gpPassword = new System.Windows.Forms.GroupBox();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.gpOptions.SuspendLayout();
             this.gpPassword.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +56,7 @@ namespace PasswordGenerator.App
             this.gpOptions.Controls.Add(this.cbNumber);
             this.gpOptions.Location = new System.Drawing.Point(12, 12);
             this.gpOptions.Name = "gpOptions";
-            this.gpOptions.Size = new System.Drawing.Size(395, 161);
+            this.gpOptions.Size = new System.Drawing.Size(421, 161);
             this.gpOptions.TabIndex = 0;
             this.gpOptions.TabStop = false;
             this.gpOptions.Text = "Options";
@@ -122,15 +123,15 @@ namespace PasswordGenerator.App
             this.txtPassword.Location = new System.Drawing.Point(7, 23);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.ReadOnly = true;
-            this.txtPassword.Size = new System.Drawing.Size(260, 23);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.Size = new System.Drawing.Size(231, 23);
+            this.txtPassword.TabIndex = 0;
             // 
             // btnGenerate
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(281, 23);
+            this.btnGenerate.Location = new System.Drawing.Point(307, 22);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(106, 25);
+            this.btnGenerate.Size = new System.Drawing.Size(109, 26);
             this.btnGenerate.TabIndex = 2;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -140,20 +141,31 @@ namespace PasswordGenerator.App
             // 
             this.gpPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpPassword.Controls.Add(this.btnCopy);
             this.gpPassword.Controls.Add(this.txtPassword);
             this.gpPassword.Controls.Add(this.btnGenerate);
             this.gpPassword.Location = new System.Drawing.Point(11, 179);
             this.gpPassword.Name = "gpPassword";
-            this.gpPassword.Size = new System.Drawing.Size(396, 64);
+            this.gpPassword.Size = new System.Drawing.Size(422, 64);
             this.gpPassword.TabIndex = 3;
             this.gpPassword.TabStop = false;
             this.gpPassword.Text = "Password";
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(245, 22);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(56, 26);
+            this.btnCopy.TabIndex = 1;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 251);
+            this.ClientSize = new System.Drawing.Size(446, 251);
             this.Controls.Add(this.gpPassword);
             this.Controls.Add(this.gpOptions);
             this.Name = "MainApp";
@@ -179,6 +191,7 @@ namespace PasswordGenerator.App
         private System.Windows.Forms.CheckBox cbUppercase;
         private System.Windows.Forms.CheckBox cbSpecialCharacters;
         private System.Windows.Forms.CheckBox cbNumber;
+        private System.Windows.Forms.Button btnCopy;
     }
 }
 
