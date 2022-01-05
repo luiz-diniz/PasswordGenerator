@@ -28,11 +28,7 @@ namespace PasswordGenerator.App
                 if (ValidateMaxSize())
                 {
                     var passwordOptions = FillPasswordOptions();
-                }
-                else
-                {
-                    throw new Exception("Password size can't be less or equal to 0.");
-                }
+                }                
             }
             catch(Exception ex)
             {
@@ -42,10 +38,13 @@ namespace PasswordGenerator.App
 
         private bool ValidateMaxSize()
         {
+            if (String.IsNullOrEmpty(txtMaxSize.Text))
+                throw new Exception("Invalid number input");
+
             var maxSize = Convert.ToInt32(txtMaxSize.Text);
 
             if (maxSize <= 0)
-                return false;
+                throw new Exception("Max size must be higher than zero.");
 
             return true;
         }
