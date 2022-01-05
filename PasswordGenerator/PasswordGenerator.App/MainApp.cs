@@ -25,7 +25,7 @@ namespace PasswordGenerator.App
         {
             try
             {
-                if (ValidateMaxSize())
+                if (ValidateUserInput())
                 {
                     var passwordOptions = FillPasswordOptions();
 
@@ -40,18 +40,13 @@ namespace PasswordGenerator.App
             }    
         }
 
-        private bool ValidateMaxSize()
+        private bool ValidateUserInput()
         {
-            if (String.IsNullOrEmpty(txtMaxSize.Text))
-                throw new Exception("Invalid number input");
+            if (String.IsNullOrEmpty(txtMaxSize.Text) || Convert.ToInt32(txtMaxSize.Text) <= 0)
+                throw new Exception("Invalid number input.\nMax size must be higher than zero.");
 
             if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)
                 throw new Exception("Select at least one option");
-
-            var maxSize = Convert.ToInt32(txtMaxSize.Text);
-
-            if (maxSize <= 0)
-                throw new Exception("Max size must be higher than zero.");
 
             return true;
         }
