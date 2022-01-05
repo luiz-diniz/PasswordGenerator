@@ -153,6 +153,7 @@ namespace PasswordGenerator.App
             // 
             // btnCopy
             // 
+            this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopy.Location = new System.Drawing.Point(245, 22);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(56, 26);
