@@ -25,7 +25,7 @@ namespace PasswordGenerator.Core
 
             //TODO: Mix characters types
 
-            return specialChars;
+            return numericChars + upperChars + lowerChars + specialChars;
         }
 
         private string GenerateCharacters(int initialRange, int finalRange, int size, bool isNumber)
@@ -35,7 +35,7 @@ namespace PasswordGenerator.Core
 
             for (int i = 0; i < size; i++)
             {
-                int random_num = random.Next(initialRange, finalRange);
+                int random_num = random.Next(initialRange, finalRange + 1);
 
                 if (isNumber)
                    builder.Append(random_num.ToString());               
