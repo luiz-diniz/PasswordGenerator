@@ -16,7 +16,7 @@ namespace PasswordGenerator.App
             _passwordGenerator = new PasswordGeneratorManager();
         }
 
-        private void btnGenerate_Click(object sender, System.EventArgs e)
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
             Generate();
         }
@@ -28,6 +28,10 @@ namespace PasswordGenerator.App
                 if (ValidateMaxSize())
                 {
                     var passwordOptions = FillPasswordOptions();
+
+                    var password = _passwordGenerator.Generate(passwordOptions);
+
+                    txtPassword.Text = password.ToString();
                 }                
             }
             catch(Exception ex)
@@ -57,7 +61,7 @@ namespace PasswordGenerator.App
             passwordOptions.Numbers = cbNumber.Checked;
             passwordOptions.SpecialCharacters = cbSpecialCharacters.Checked;
             passwordOptions.UpperCaseLetters = cbUppercase.Checked;
-            passwordOptions.UpperCaseLetters = cbLowercase.Checked;
+            passwordOptions.LowerCaseLetters = cbLowercase.Checked;
 
             return passwordOptions;
         }

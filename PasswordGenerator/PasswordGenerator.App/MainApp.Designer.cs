@@ -63,7 +63,7 @@ namespace PasswordGenerator.App
             // lblMaxSize
             // 
             this.lblMaxSize.AutoSize = true;
-            this.lblMaxSize.Location = new System.Drawing.Point(46, 128);
+            this.lblMaxSize.Location = new System.Drawing.Point(76, 126);
             this.lblMaxSize.Name = "lblMaxSize";
             this.lblMaxSize.Size = new System.Drawing.Size(53, 15);
             this.lblMaxSize.TabIndex = 5;
@@ -73,7 +73,7 @@ namespace PasswordGenerator.App
             // 
             this.txtMaxSize.Location = new System.Drawing.Point(7, 123);
             this.txtMaxSize.Name = "txtMaxSize";
-            this.txtMaxSize.Size = new System.Drawing.Size(35, 23);
+            this.txtMaxSize.Size = new System.Drawing.Size(63, 23);
             this.txtMaxSize.TabIndex = 4;
             // 
             // cbLowercase
