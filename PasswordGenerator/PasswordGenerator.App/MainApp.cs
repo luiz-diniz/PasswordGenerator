@@ -45,6 +45,9 @@ namespace PasswordGenerator.App
             if (String.IsNullOrEmpty(txtMaxSize.Text))
                 throw new Exception("Invalid number input");
 
+            if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)
+                throw new Exception("Select at least one option");
+
             var maxSize = Convert.ToInt32(txtMaxSize.Text);
 
             if (maxSize <= 0)

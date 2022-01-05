@@ -23,8 +23,10 @@ namespace PasswordGenerator.Core
             if(passwordOptions.LowerCaseLetters)
                 lowerChars = GenerateCharacters(97, 122, passwordOptions.MaxSize, false).ToString();
 
-            //TODO: Mix characters types
+            //TODO: Mix characters types together 
+            //logic...
 
+            //this is just a test
             return numericChars + upperChars + lowerChars + specialChars;
         }
 
