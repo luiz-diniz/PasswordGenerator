@@ -15,7 +15,7 @@ This is a password generator
 
 ## Roadmap
  * Generate the password using an API and a command line
- * Create a MSI Installer for the WindowsForms version
+ * Generate multiple passwords
 
 ## Contributing
 Any ideias or bug fixes are welcome. Just submit your pull request =)
