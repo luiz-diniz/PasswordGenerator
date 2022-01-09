@@ -9,6 +9,12 @@ namespace PasswordGenerator.Core
     {
         public string Generate(PasswordOptions passwordOptions)
         {
+            if (passwordOptions == null)
+                throw new ArgumentNullException(nameof(passwordOptions), "Password options object is null.");
+
+            if (passwordOptions.Size <= 0)
+                throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid password size. Password size must be higher than zero.");
+
             var generatedStringResult = new StringBuilder();
 
             //characters numbers based on the ascii table
