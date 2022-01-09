@@ -13,17 +13,17 @@ namespace PasswordGenerator.Core
 
             //characters numbers based on the ascii table
             if(passwordOptions.Numbers)
-                generatedStringResult.Append(GenerateCharacters(0, 9, passwordOptions.MaxSize, true).ToString());
+                generatedStringResult.Append(GenerateCharacters(0, 9, passwordOptions.Size, true).ToString());
             if(passwordOptions.SpecialCharacters)
-                generatedStringResult.Append(GenerateCharacters(33, 43, passwordOptions.MaxSize, false).ToString());
+                generatedStringResult.Append(GenerateCharacters(33, 43, passwordOptions.Size, false).ToString());
             if(passwordOptions.UpperCaseLetters)
-                generatedStringResult.Append(GenerateCharacters(65, 90, passwordOptions.MaxSize, false).ToString());
+                generatedStringResult.Append(GenerateCharacters(65, 90, passwordOptions.Size, false).ToString());
             if(passwordOptions.LowerCaseLetters)
-                generatedStringResult.Append(GenerateCharacters(97, 122, passwordOptions.MaxSize, false).ToString());
+                generatedStringResult.Append(GenerateCharacters(97, 122, passwordOptions.Size, false).ToString());
 
             var appendedCharacters = generatedStringResult.ToString().ToArray();
 
-            return RandomizeCharacters(appendedCharacters).Substring(0, passwordOptions.MaxSize);
+            return RandomizeCharacters(appendedCharacters).Substring(0, passwordOptions.Size);
         }
 
         private string RandomizeCharacters(char[] text)

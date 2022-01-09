@@ -28,7 +28,7 @@ namespace PasswordGenerator.ConsoleApp
             passwordOptions.LowerCaseLetters = Console.ReadLine().ToLower().Trim() == "y" ? true : false;
 
             Console.WriteLine("\n- Password size: ");
-            passwordOptions.MaxSize =  Convert.ToInt32(Console.ReadLine());
+            passwordOptions.Size =  Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Your password is:\n");
             Console.WriteLine(passwordGenerator.Generate(passwordOptions));

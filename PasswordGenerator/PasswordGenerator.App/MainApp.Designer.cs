@@ -31,8 +31,8 @@ namespace PasswordGenerator.App
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainApp));
             this.gpOptions = new System.Windows.Forms.GroupBox();
-            this.lblMaxSize = new System.Windows.Forms.Label();
-            this.txtMaxSize = new System.Windows.Forms.TextBox();
+            this.lblPasswordSize = new System.Windows.Forms.Label();
+            this.txtPasswordSize = new System.Windows.Forms.TextBox();
             this.cbLowercase = new System.Windows.Forms.CheckBox();
             this.cbUppercase = new System.Windows.Forms.CheckBox();
             this.cbSpecialCharacters = new System.Windows.Forms.CheckBox();
@@ -49,8 +49,8 @@ namespace PasswordGenerator.App
             // 
             this.gpOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpOptions.Controls.Add(this.lblMaxSize);
-            this.gpOptions.Controls.Add(this.txtMaxSize);
+            this.gpOptions.Controls.Add(this.lblPasswordSize);
+            this.gpOptions.Controls.Add(this.txtPasswordSize);
             this.gpOptions.Controls.Add(this.cbLowercase);
             this.gpOptions.Controls.Add(this.cbUppercase);
             this.gpOptions.Controls.Add(this.cbSpecialCharacters);
@@ -62,21 +62,21 @@ namespace PasswordGenerator.App
             this.gpOptions.TabStop = false;
             this.gpOptions.Text = "Options";
             // 
-            // lblMaxSize
+            // lblPasswordSize
             // 
-            this.lblMaxSize.AutoSize = true;
-            this.lblMaxSize.Location = new System.Drawing.Point(76, 126);
-            this.lblMaxSize.Name = "lblMaxSize";
-            this.lblMaxSize.Size = new System.Drawing.Size(53, 15);
-            this.lblMaxSize.TabIndex = 5;
-            this.lblMaxSize.Text = "Max Size";
+            this.lblPasswordSize.AutoSize = true;
+            this.lblPasswordSize.Location = new System.Drawing.Point(76, 126);
+            this.lblPasswordSize.Name = "lblPasswordSize";
+            this.lblPasswordSize.Size = new System.Drawing.Size(80, 15);
+            this.lblPasswordSize.TabIndex = 5;
+            this.lblPasswordSize.Text = "Password Size";
             // 
-            // txtMaxSize
+            // txtPasswordSize
             // 
-            this.txtMaxSize.Location = new System.Drawing.Point(7, 123);
-            this.txtMaxSize.Name = "txtMaxSize";
-            this.txtMaxSize.Size = new System.Drawing.Size(63, 23);
-            this.txtMaxSize.TabIndex = 4;
+            this.txtPasswordSize.Location = new System.Drawing.Point(7, 123);
+            this.txtPasswordSize.Name = "txtPasswordSize";
+            this.txtPasswordSize.Size = new System.Drawing.Size(63, 23);
+            this.txtPasswordSize.TabIndex = 4;
             // 
             // cbLowercase
             // 
@@ -188,8 +188,8 @@ namespace PasswordGenerator.App
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.GroupBox gpPassword;
-        private System.Windows.Forms.Label lblMaxSize;
-        private System.Windows.Forms.TextBox txtMaxSize;
+        private System.Windows.Forms.Label lblPasswordSize;
+        private System.Windows.Forms.TextBox txtPasswordSize;
         private System.Windows.Forms.CheckBox cbLowercase;
         private System.Windows.Forms.CheckBox cbUppercase;
         private System.Windows.Forms.CheckBox cbSpecialCharacters;

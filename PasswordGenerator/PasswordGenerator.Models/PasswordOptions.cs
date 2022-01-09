@@ -4,7 +4,7 @@ namespace PasswordGenerator.Models
 {
     public class PasswordOptions
     {
-        public int MaxSize { get; set; }
+        public int Size { get; set; }
         public bool Numbers { get; set; }
         public bool SpecialCharacters { get; set; }
         public bool UpperCaseLetters { get; set; }
