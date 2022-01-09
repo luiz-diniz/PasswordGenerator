@@ -14,8 +14,8 @@ This is a password generator
  * That's it! :)
 
 ## Roadmap
- * Generate the password using an API and a command line
  * Generate multiple passwords
+ * Create a Web version of the app
 
 ## Contributing
 Any ideias or bug fixes are welcome. Just submit your pull request =)
