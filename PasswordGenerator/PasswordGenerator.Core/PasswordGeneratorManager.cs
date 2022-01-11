@@ -64,5 +64,10 @@ namespace PasswordGenerator.Core
 
             return builder.ToString();
         }
+
+        public bool GenerateMultiple(PasswordOptions passwordOptions)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

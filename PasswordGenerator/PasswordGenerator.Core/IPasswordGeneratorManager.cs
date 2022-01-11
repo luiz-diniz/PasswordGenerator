@@ -10,5 +10,6 @@ namespace PasswordGenerator.Core
     public interface IPasswordGeneratorManager
     {
         public string Generate(PasswordOptions passwordOptions);
+        public bool GenerateMultiple(PasswordOptions passwordOptions);
     }
 }

@@ -21,15 +21,16 @@ namespace PasswordGenerator.App
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            Generate();
+            if (!cbMultiplePasswords.Checked)
+                Generate();
+            else
+                GenerateMultiple();
         }
 
         public void InitializeControllers()
         {
             btnCopy.Enabled = false;
             txtQuantity.Enabled = false;
-            txtPath.Enabled = false;
-            btnPath.Enabled = false;
         }
 
         private void Generate()
@@ -50,6 +51,26 @@ namespace PasswordGenerator.App
             {
                 MessageBox.Show(ex.Message, "Error generating password", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }    
+        }
+
+        private void GenerateMultiple()
+        {
+            try
+            {
+                if (ValidateUserInput())
+                {
+                    var passwordOptions = FillPasswordOptions();
+
+                    var password = _passwordGenerator.Generate(passwordOptions);
+
+                    txtPassword.Text = password.ToString();
+                    btnCopy.Enabled = cbMultiplePasswords.Checked ? false : true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error generating password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private bool ValidateUserInput()
@@ -82,32 +103,12 @@ namespace PasswordGenerator.App
             Clipboard.SetText(txtPassword.Text);
         }
 
-        private void btnPath_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dlg = new OpenFileDialog();
-
-            dlg.InitialDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-
-            if(dlg.ShowDialog() == DialogResult.OK)
-            {
-                txtPath.Text = dlg.FileName;
-            }
-        }
-
         private void cbMultiplePasswords_CheckedChanged(object sender, EventArgs e)
         {
             if (!cbMultiplePasswords.Checked)
-            {
                 txtQuantity.Enabled = false;
-                txtPath.Enabled = false;
-                btnPath.Enabled = false;
-            }
             else
-            {
                 txtQuantity.Enabled = true;
-                txtPath.Enabled = true;
-                btnPath.Enabled = true;
-            }
         }
     }
 }
