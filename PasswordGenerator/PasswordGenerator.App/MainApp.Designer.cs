@@ -83,7 +83,7 @@ namespace PasswordGenerator.App
             this.gpMultiple.Controls.Add(this.txtPath);
             this.gpMultiple.Location = new System.Drawing.Point(7, 187);
             this.gpMultiple.Name = "gpMultiple";
-            this.gpMultiple.Size = new System.Drawing.Size(456, 116);
+            this.gpMultiple.Size = new System.Drawing.Size(525, 116);
             this.gpMultiple.TabIndex = 12;
             this.gpMultiple.TabStop = false;
             this.gpMultiple.Text = "Passwords Manager";
@@ -249,7 +249,9 @@ namespace PasswordGenerator.App
             this.ClientSize = new System.Drawing.Size(562, 417);
             this.Controls.Add(this.gpPassword);
             this.Controls.Add(this.gpOptions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordGenerator";

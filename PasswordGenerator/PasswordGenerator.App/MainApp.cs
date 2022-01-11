@@ -1,6 +1,8 @@
 ﻿using PasswordGenerator.Core;
 using PasswordGenerator.Models;
 using System;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace PasswordGenerator.App
@@ -82,6 +84,14 @@ namespace PasswordGenerator.App
 
         private void btnPath_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            dlg.InitialDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtPath.Text = dlg.FileName;
+            }
         }
 
         private void cbMultiplePasswords_CheckedChanged(object sender, EventArgs e)
