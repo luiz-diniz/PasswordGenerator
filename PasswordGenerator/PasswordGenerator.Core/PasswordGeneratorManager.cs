@@ -7,14 +7,27 @@ namespace PasswordGenerator.Core
 {
     public class PasswordGeneratorManager : IPasswordGeneratorManager
     {
-        public string Generate(PasswordOptions passwordOptions)
+        public string[] GeneratePassword(PasswordOptions passwordOptions)
         {
             if (passwordOptions == null)
                 throw new ArgumentNullException(nameof(passwordOptions), "Password options object is null.");
 
+            if (passwordOptions.Quantity <= 0)
+                throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid quantity value.");
+
             if (passwordOptions.Size <= 0)
                 throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid password size. Password size must be higher than zero.");
 
+            string[] passwords = new string[passwordOptions.Quantity];
+
+            for (int i = 0; i < passwords.Length; i++)
+                passwords[i] = Generate(passwordOptions);
+
+            return passwords;
+        }
+
+        private string Generate(PasswordOptions passwordOptions)
+        {
             var generatedStringResult = new StringBuilder();
 
             //characters numbers based on the ascii table
@@ -63,11 +76,6 @@ namespace PasswordGenerator.Core
             }
 
             return builder.ToString();
-        }
-
-        public bool GenerateMultiple(PasswordOptions passwordOptions)
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }

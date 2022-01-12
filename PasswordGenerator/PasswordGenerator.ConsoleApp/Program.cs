@@ -1,6 +1,7 @@
 ﻿using PasswordGenerator.Core;
 using PasswordGenerator.Models;
 using System;
+using System.Text;
 
 namespace PasswordGenerator.ConsoleApp
 {
@@ -30,10 +31,26 @@ namespace PasswordGenerator.ConsoleApp
             Console.WriteLine("\n- Password size: ");
             passwordOptions.Size =  Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Your password is:\n");
-            Console.WriteLine(passwordGenerator.Generate(passwordOptions));
+            Console.WriteLine("\n- Quantity of passwords to be generated: ");
+            passwordOptions.Quantity = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write(passwordOptions.Quantity > 1 ? "Your passwords are:\n\n" : "Your passwords is:\n\n");
+            Console.WriteLine(BuildResult(passwordGenerator.GeneratePassword(passwordOptions)));
 
             Console.ReadKey();
+        }
+
+        static string BuildResult(string[] passwords)
+        {
+            var builder = new StringBuilder();
+
+            foreach (var password in passwords)
+            {
+                builder.AppendLine($"{password}");
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
         }
     }
 }

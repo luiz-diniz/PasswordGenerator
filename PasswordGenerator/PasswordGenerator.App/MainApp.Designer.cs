@@ -33,7 +33,6 @@ namespace PasswordGenerator.App
             this.gpOptions = new System.Windows.Forms.GroupBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
-            this.cbMultiplePasswords = new System.Windows.Forms.CheckBox();
             this.lblPasswordSize = new System.Windows.Forms.Label();
             this.txtPasswordSize = new System.Windows.Forms.TextBox();
             this.cbLowercase = new System.Windows.Forms.CheckBox();
@@ -54,7 +53,6 @@ namespace PasswordGenerator.App
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpOptions.Controls.Add(this.txtQuantity);
             this.gpOptions.Controls.Add(this.lblQuantity);
-            this.gpOptions.Controls.Add(this.cbMultiplePasswords);
             this.gpOptions.Controls.Add(this.lblPasswordSize);
             this.gpOptions.Controls.Add(this.txtPasswordSize);
             this.gpOptions.Controls.Add(this.cbLowercase);
@@ -63,14 +61,14 @@ namespace PasswordGenerator.App
             this.gpOptions.Controls.Add(this.cbNumber);
             this.gpOptions.Location = new System.Drawing.Point(12, 12);
             this.gpOptions.Name = "gpOptions";
-            this.gpOptions.Size = new System.Drawing.Size(486, 236);
+            this.gpOptions.Size = new System.Drawing.Size(431, 189);
             this.gpOptions.TabIndex = 0;
             this.gpOptions.TabStop = false;
             this.gpOptions.Text = "Options";
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(7, 192);
+            this.txtQuantity.Location = new System.Drawing.Point(7, 152);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(63, 23);
             this.txtQuantity.TabIndex = 10;
@@ -78,27 +76,16 @@ namespace PasswordGenerator.App
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(76, 196);
+            this.lblQuantity.Location = new System.Drawing.Point(74, 155);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(246, 15);
+            this.lblQuantity.Size = new System.Drawing.Size(111, 15);
             this.lblQuantity.TabIndex = 11;
-            this.lblQuantity.Text = "How many passwords you want to generate ?";
-            // 
-            // cbMultiplePasswords
-            // 
-            this.cbMultiplePasswords.AutoSize = true;
-            this.cbMultiplePasswords.Location = new System.Drawing.Point(7, 158);
-            this.cbMultiplePasswords.Name = "cbMultiplePasswords";
-            this.cbMultiplePasswords.Size = new System.Drawing.Size(178, 19);
-            this.cbMultiplePasswords.TabIndex = 6;
-            this.cbMultiplePasswords.Text = "Generate Multiple Passwords";
-            this.cbMultiplePasswords.UseVisualStyleBackColor = true;
-            this.cbMultiplePasswords.CheckedChanged += new System.EventHandler(this.cbMultiplePasswords_CheckedChanged);
+            this.lblQuantity.Text = "Passwords Quantity";
             // 
             // lblPasswordSize
             // 
             this.lblPasswordSize.AutoSize = true;
-            this.lblPasswordSize.Location = new System.Drawing.Point(76, 126);
+            this.lblPasswordSize.Location = new System.Drawing.Point(74, 126);
             this.lblPasswordSize.Name = "lblPasswordSize";
             this.lblPasswordSize.Size = new System.Drawing.Size(80, 15);
             this.lblPasswordSize.TabIndex = 5;
@@ -154,6 +141,7 @@ namespace PasswordGenerator.App
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.Location = new System.Drawing.Point(8, 22);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
@@ -167,7 +155,7 @@ namespace PasswordGenerator.App
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerate.Location = new System.Drawing.Point(245, 86);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(192, 26);
+            this.btnGenerate.Size = new System.Drawing.Size(180, 26);
             this.btnGenerate.TabIndex = 2;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -180,9 +168,9 @@ namespace PasswordGenerator.App
             this.gpPassword.Controls.Add(this.btnCopy);
             this.gpPassword.Controls.Add(this.txtPassword);
             this.gpPassword.Controls.Add(this.btnGenerate);
-            this.gpPassword.Location = new System.Drawing.Point(12, 251);
+            this.gpPassword.Location = new System.Drawing.Point(12, 209);
             this.gpPassword.Name = "gpPassword";
-            this.gpPassword.Size = new System.Drawing.Size(486, 128);
+            this.gpPassword.Size = new System.Drawing.Size(431, 128);
             this.gpPassword.TabIndex = 3;
             this.gpPassword.TabStop = false;
             this.gpPassword.Text = "Password";
@@ -192,7 +180,7 @@ namespace PasswordGenerator.App
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopy.Location = new System.Drawing.Point(245, 54);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(89, 26);
+            this.btnCopy.Size = new System.Drawing.Size(82, 26);
             this.btnCopy.TabIndex = 1;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -202,7 +190,7 @@ namespace PasswordGenerator.App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 391);
+            this.ClientSize = new System.Drawing.Size(455, 349);
             this.Controls.Add(this.gpPassword);
             this.Controls.Add(this.gpOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -232,7 +220,6 @@ namespace PasswordGenerator.App
         private System.Windows.Forms.CheckBox cbSpecialCharacters;
         private System.Windows.Forms.CheckBox cbNumber;
         private System.Windows.Forms.Button btnCopy;
-        private System.Windows.Forms.CheckBox cbMultiplePasswords;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label lblQuantity;
     }

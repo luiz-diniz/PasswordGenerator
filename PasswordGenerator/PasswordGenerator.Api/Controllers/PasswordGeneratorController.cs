@@ -17,9 +17,9 @@ namespace PasswordGenerator.Api.Controllers
 
         [HttpPost]
         [Route("generate")]
-        public string Generate(PasswordOptions passwordOptions)
+        public string[] Generate(PasswordOptions passwordOptions)
         {
-            return _passwordGenerator.Generate(passwordOptions);
+            return _passwordGenerator.GeneratePassword(passwordOptions);
         }
     }
 }

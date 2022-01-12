@@ -9,5 +9,6 @@ namespace PasswordGenerator.Models
         public bool SpecialCharacters { get; set; }
         public bool UpperCaseLetters { get; set; }
         public bool LowerCaseLetters { get; set; }
+        public int Quantity { get; set; }
     }
 }

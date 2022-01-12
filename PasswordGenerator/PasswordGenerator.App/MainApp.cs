@@ -3,6 +3,7 @@ using PasswordGenerator.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace PasswordGenerator.App
@@ -21,19 +22,19 @@ namespace PasswordGenerator.App
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            if (!cbMultiplePasswords.Checked)
-                Generate();
-            else
-                GenerateMultiple();
+            GeneratePassword();
+        }
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPassword.Text);
         }
 
         public void InitializeControllers()
         {
             btnCopy.Enabled = false;
-            txtQuantity.Enabled = false;
         }
 
-        private void Generate()
+        private void GeneratePassword()
         {
             try
             {
@@ -41,30 +42,10 @@ namespace PasswordGenerator.App
                 {
                     var passwordOptions = FillPasswordOptions();
 
-                    var password = _passwordGenerator.Generate(passwordOptions);
+                    var password = _passwordGenerator.GeneratePassword(passwordOptions);
 
-                    txtPassword.Text = password.ToString();
-                    btnCopy.Enabled = cbMultiplePasswords.Checked ? false : true;
-                }                
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error generating password", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }    
-        }
-
-        private void GenerateMultiple()
-        {
-            try
-            {
-                if (ValidateUserInput())
-                {
-                    var passwordOptions = FillPasswordOptions();
-
-                    var password = _passwordGenerator.Generate(passwordOptions);
-
-                    txtPassword.Text = password.ToString();
-                    btnCopy.Enabled = cbMultiplePasswords.Checked ? false : true;
+                    FillTextBox(password);
+                    btnCopy.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -75,12 +56,15 @@ namespace PasswordGenerator.App
 
         private bool ValidateUserInput()
         {
+            if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)
+                throw new Exception("Select at least one option.");
+
             var output = 0;
             if (String.IsNullOrEmpty(txtPasswordSize.Text) || !int.TryParse(txtPasswordSize.Text, out output) || Convert.ToInt32(txtPasswordSize.Text) <= 0)
                 throw new Exception("Invalid number input.\nPassword size must be higher than zero.");
 
-            if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)
-                throw new Exception("Select at least one option");
+            if(String.IsNullOrEmpty(txtQuantity.Text) || !int.TryParse(txtPasswordSize.Text, out output) || Convert.ToInt32(txtPasswordSize.Text) <= 0)
+                throw new Exception("Invalid number input.\nQuantity must be higher than zero.");
 
             return true;
         }
@@ -94,21 +78,24 @@ namespace PasswordGenerator.App
             passwordOptions.SpecialCharacters = cbSpecialCharacters.Checked;
             passwordOptions.UpperCaseLetters = cbUppercase.Checked;
             passwordOptions.LowerCaseLetters = cbLowercase.Checked;
+            passwordOptions.Quantity = Convert.ToInt32(txtQuantity.Text);
 
             return passwordOptions;
         }
 
-        private void btnCopy_Click(object sender, EventArgs e)
+        private void FillTextBox(string[] passwords)
         {
-            Clipboard.SetText(txtPassword.Text);
-        }
+            txtPassword.Text = string.Empty;
 
-        private void cbMultiplePasswords_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!cbMultiplePasswords.Checked)
-                txtQuantity.Enabled = false;
-            else
-                txtQuantity.Enabled = true;
+            var builder = new StringBuilder();
+
+            foreach (var password in passwords)
+            {
+                builder.AppendLine($"{password}");
+                builder.AppendLine();
+            }
+
+            txtPassword.Text = builder.ToString();
         }
     }
 }
