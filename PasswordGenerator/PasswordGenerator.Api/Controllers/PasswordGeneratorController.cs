@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PasswordGenerator.Core;
 using PasswordGenerator.Models;
+using System;
 
 namespace PasswordGenerator.Api.Controllers
 {
     [ApiController]
     [Route("api/passwordgenerator")]
-    public class PasswordGeneratorController
+    public class PasswordGeneratorController : ControllerBase
     {
         private IPasswordGeneratorManager _passwordGenerator;
 
@@ -17,9 +18,19 @@ namespace PasswordGenerator.Api.Controllers
 
         [HttpPost]
         [Route("generate")]
-        public string[] Generate(PasswordOptions passwordOptions)
+        public IActionResult Generate(PasswordOptions passwordOptions)
         {
-            return _passwordGenerator.GeneratePassword(passwordOptions);
+            try
+            {
+                return Ok(_passwordGenerator.GeneratePassword(passwordOptions));
+            }
+            catch (Exception ex)
+            {
+                if (ex is ArgumentNullException || ex is ArgumentOutOfRangeException)
+                    return BadRequest(ex.Message);
+
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
