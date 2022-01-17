@@ -59,7 +59,7 @@ namespace PasswordGenerator.ConsoleApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error trying to generate the password.");
+                Console.WriteLine($"Error trying to generate the password:\n{ex.Message}");
             }                 
 
             Console.ReadKey();
