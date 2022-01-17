@@ -3,7 +3,7 @@
 This is a password generator
 
 ## Features
- * This app generate a password/passwords based on the user's preference.
+ * This app generate passwords based on the user's preference.
 
 ## How To Use
  * Open the "Version" folder, execute the PasswordGenerator.exe
