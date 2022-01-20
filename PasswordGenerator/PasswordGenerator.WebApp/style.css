@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form{
+    padding: 2rem;
+}
+
+.container-content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8A8D91;
+}
+
+.card{
+    max-width: 40rem;
+}

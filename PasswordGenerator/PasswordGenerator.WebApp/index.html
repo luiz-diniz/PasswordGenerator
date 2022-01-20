@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>PasswordGenerator</title>
+</head>
+<body>
+    <div class="container-content">
+        <div class="card">
+            <div class="card-header text-center">Password Generator</div>
+            <form>
+                <h5>Options</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="numbers">
+                    <label class="form-check-label" for="numbers"> Numbers </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="specialCharacters">
+                    <label class="form-check-label" for="specialCharacters"> Special Characters </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="upperCaseLetters">
+                    <label class="form-check-label" for="upperCaseLetters"> Uppercase Letters </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="lowerCaseLetters">
+                    <label class="form-check-label" for="lowerCaseLetters"> Lowercase Letters </label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="passwordSize">Password Size</label>
+                    <input type="text" class="form-control" id="passwordSize" placeholder="Ex: 0">
+                </div>
+                <div class="form-group">
+                    <label for="passwordQuantity">Quantity of passwords to be generated</label>
+                    <input type="text" class="form-control" id="passwordQuantity" placeholder="Ex: 2">
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" disabled>Generate</button>
+                <br>
+                <div class="form-group">
+                    <textarea class="form-control" id="passwordsResult" readonly></textarea>
+                  </div>
+            </form>            
+        </div>
+    </div>   
+</body>
+</html>
