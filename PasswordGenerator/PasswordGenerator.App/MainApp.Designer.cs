@@ -61,14 +61,14 @@ namespace PasswordGenerator.App
             this.gpOptions.Controls.Add(this.cbNumber);
             this.gpOptions.Location = new System.Drawing.Point(12, 12);
             this.gpOptions.Name = "gpOptions";
-            this.gpOptions.Size = new System.Drawing.Size(431, 189);
+            this.gpOptions.Size = new System.Drawing.Size(431, 231);
             this.gpOptions.TabIndex = 0;
             this.gpOptions.TabStop = false;
             this.gpOptions.Text = "Options";
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(7, 152);
+            this.txtQuantity.Location = new System.Drawing.Point(10, 191);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(63, 23);
             this.txtQuantity.TabIndex = 10;
@@ -76,7 +76,7 @@ namespace PasswordGenerator.App
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(74, 155);
+            this.lblQuantity.Location = new System.Drawing.Point(7, 173);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(111, 15);
             this.lblQuantity.TabIndex = 11;
@@ -85,7 +85,7 @@ namespace PasswordGenerator.App
             // lblPasswordSize
             // 
             this.lblPasswordSize.AutoSize = true;
-            this.lblPasswordSize.Location = new System.Drawing.Point(74, 126);
+            this.lblPasswordSize.Location = new System.Drawing.Point(7, 125);
             this.lblPasswordSize.Name = "lblPasswordSize";
             this.lblPasswordSize.Size = new System.Drawing.Size(80, 15);
             this.lblPasswordSize.TabIndex = 5;
@@ -93,7 +93,7 @@ namespace PasswordGenerator.App
             // 
             // txtPasswordSize
             // 
-            this.txtPasswordSize.Location = new System.Drawing.Point(7, 123);
+            this.txtPasswordSize.Location = new System.Drawing.Point(10, 143);
             this.txtPasswordSize.Name = "txtPasswordSize";
             this.txtPasswordSize.Size = new System.Drawing.Size(63, 23);
             this.txtPasswordSize.TabIndex = 4;
@@ -168,7 +168,7 @@ namespace PasswordGenerator.App
             this.gpPassword.Controls.Add(this.btnCopy);
             this.gpPassword.Controls.Add(this.txtPassword);
             this.gpPassword.Controls.Add(this.btnGenerate);
-            this.gpPassword.Location = new System.Drawing.Point(12, 209);
+            this.gpPassword.Location = new System.Drawing.Point(12, 249);
             this.gpPassword.Name = "gpPassword";
             this.gpPassword.Size = new System.Drawing.Size(431, 128);
             this.gpPassword.TabIndex = 3;
@@ -190,7 +190,7 @@ namespace PasswordGenerator.App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 349);
+            this.ClientSize = new System.Drawing.Size(455, 389);
             this.Controls.Add(this.gpPassword);
             this.Controls.Add(this.gpOptions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
