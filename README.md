@@ -16,6 +16,7 @@ This is a password generator
 
 ## Roadmap
  * Create a Web version of the app
+ * Use Async features
 
 ## Contributing
 Any ideias or bug fixes are welcome. Just submit your Issue or Pull Request =)
