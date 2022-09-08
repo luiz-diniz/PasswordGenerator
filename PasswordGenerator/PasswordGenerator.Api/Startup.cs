@@ -29,17 +29,6 @@ namespace PasswordGenerator.Api
         {
             services.AddSingleton<IPasswordGeneratorManager, PasswordGeneratorManager>();
 
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-                        builder.WithOrigins("http://passwordgeneratorld-com.preview-domain.com/")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-            });
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -62,13 +51,7 @@ namespace PasswordGenerator.Api
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials());
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
