@@ -40,7 +40,7 @@
                     <label for="passwordQuantity">Quantity of passwords to be generated</label>
                     <input type="number" class="form-control" id="passwordQuantity" placeholder="Ex: 2" onkeyup="ControlButton()">
                 </div>
-                <button id="generate" class="btn btn-primary btn-lg btn-block" type="submit" disabled>Generate</button>
+                <button id="generate" onclick="CallPasswordGenerator()" class="btn btn-primary btn-lg btn-block" type="button" disabled>Generate</button>
                 <br>
                 <div class="form-group">
                     <textarea class="form-control" id="passwordsResult" readonly></textarea>

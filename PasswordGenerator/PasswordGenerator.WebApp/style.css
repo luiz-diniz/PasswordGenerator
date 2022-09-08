@@ -21,3 +21,7 @@ form{
 .card{
     max-width: 40rem;
 }
+
+textarea{
+    height: 10rem !important;
+}

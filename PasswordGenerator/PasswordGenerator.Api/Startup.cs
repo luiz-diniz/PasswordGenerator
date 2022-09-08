@@ -29,6 +29,8 @@ namespace PasswordGenerator.Api
         {
             services.AddSingleton<IPasswordGeneratorManager, PasswordGeneratorManager>();
 
+            services.AddCors();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -51,6 +53,12 @@ namespace PasswordGenerator.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
 
             app.UseEndpoints(endpoints =>
             {
