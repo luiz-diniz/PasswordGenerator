@@ -52,12 +52,17 @@ function CallPasswordGenerator(){
             console.log(json);
             PopulatePasswordResultTextArea(json);
         }
+        else{
+            passwordsResultTextArea.value = 'Error obtaining password(s).';      
+        }
     };
 
     xhr.send(jsonPassswordOptions);
 }
 
 function PopulatePasswordResultTextArea(passwords){
+    passwordsResultTextArea.value = '';
+
     passwords.forEach(password => {
         passwordsResultTextArea.value += password + '\n\n';
     });
