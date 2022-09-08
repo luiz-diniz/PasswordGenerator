@@ -29,7 +29,16 @@ namespace PasswordGenerator.Api
         {
             services.AddSingleton<IPasswordGeneratorManager, PasswordGeneratorManager>();
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://passwordgeneratorld-com.preview-domain.com/")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

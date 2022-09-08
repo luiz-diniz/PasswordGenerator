@@ -2,6 +2,8 @@
 using PasswordGenerator.Core;
 using PasswordGenerator.Models;
 using System;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Cors;
 
 namespace PasswordGenerator.Api.Controllers
 {
@@ -10,10 +12,12 @@ namespace PasswordGenerator.Api.Controllers
     public class PasswordGeneratorController : ControllerBase
     {
         private IPasswordGeneratorManager _passwordGenerator;
+        private ILogger<PasswordGeneratorController> _logger;
 
-        public PasswordGeneratorController(IPasswordGeneratorManager passwordGeneratorManager)
+        public PasswordGeneratorController(IPasswordGeneratorManager passwordGeneratorManager, ILogger<PasswordGeneratorController> logger)
         {
             _passwordGenerator = passwordGeneratorManager;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -22,13 +26,13 @@ namespace PasswordGenerator.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("Request coming from - " +
+                                       $"IP: {Request.HttpContext.Connection.RemoteIpAddress}");
+
                 return Ok(_passwordGenerator.GeneratePassword(passwordOptions));
             }
             catch (Exception ex)
             {
-                if (ex is ArgumentNullException || ex is ArgumentOutOfRangeException)
-                    return BadRequest(ex.Message);
-
                 return StatusCode(500, ex.Message);
             }
         }

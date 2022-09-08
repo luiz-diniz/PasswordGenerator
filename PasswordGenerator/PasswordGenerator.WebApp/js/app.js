@@ -16,15 +16,10 @@ function ControlButton(){
        passwordSizeTextInput.value > 0 && 
        passwordQuantityTextInput.value > 0)
     {
-        console.log('desabilitado');
-        console.log(passwordSizeTextInput.value);
-
         generateButton.disabled = false;
     }
     else
     {
-        console.log('habiltiado');
-
         generateButton.disabled = true;
     }
 }
@@ -42,7 +37,7 @@ function CallPasswordGenerator(){
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'https://localhost:44304/api/passwordgenerator/generate', true);
+    xhr.open('POST', 'https://passwordgeneratorapitest.azurewebsites.net/api/passwordgenerator/generate', true);
 
     xhr.setRequestHeader("Content-Type", "application/json");
 

@@ -1,4 +1,5 @@
-﻿using PasswordGenerator.Models;
+﻿using Microsoft.Extensions.Logging;
+using PasswordGenerator.Models;
 using System;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,40 @@ namespace PasswordGenerator.Core
 {
     public class PasswordGeneratorManager : IPasswordGeneratorManager
     {
+        private readonly ILogger<PasswordGeneratorManager> _logger;
+
+        public PasswordGeneratorManager(ILogger<PasswordGeneratorManager> logger)
+        {
+            _logger = logger;
+        }
+
         public string[] GeneratePassword(PasswordOptions passwordOptions)
         {
-            if (passwordOptions == null)
-                throw new ArgumentNullException(nameof(passwordOptions), "Password options object is null.");
+            try
+            {
+                if (passwordOptions == null)
+                    throw new ArgumentNullException(nameof(passwordOptions), "Password options object is null.");
 
-            if (passwordOptions.Quantity <= 0)
-                throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid quantity value.");
+                if (passwordOptions.Quantity <= 0)
+                    throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid quantity value.");
 
-            if (passwordOptions.Size <= 0)
-                throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid password size. Password size must be higher than zero.");
+                if (passwordOptions.Size <= 0)
+                    throw new ArgumentOutOfRangeException(nameof(passwordOptions), "Invalid password size. Password size must be higher than zero.");
 
-            string[] passwords = new string[passwordOptions.Quantity];
+                LogPasswordOptions(passwordOptions);
 
-            for (int i = 0; i < passwords.Length; i++)
-                passwords[i] = Generate(passwordOptions);
+                string[] passwords = new string[passwordOptions.Quantity];
 
-            return passwords;
+                for (int i = 0; i < passwords.Length; i++)
+                    passwords[i] = Generate(passwordOptions);
+
+                return passwords;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error trying to generate the password: {ex.Message}");
+                throw;
+            }
         }
 
         private string Generate(PasswordOptions passwordOptions)
@@ -76,6 +94,20 @@ namespace PasswordGenerator.Core
             }
 
             return builder.ToString();
-        }     
+        }
+
+        private void LogPasswordOptions(PasswordOptions passwordOptions)
+        {
+            _logger.LogInformation("Logging PasswordOptions object received from client.");
+
+            _logger.LogInformation(
+                 $"Size: {passwordOptions.Size}\n" +
+                        $"Numbers: {passwordOptions.Numbers}\n" +
+                        $"SpecialCharacters: {passwordOptions.SpecialCharacters}\n" +
+                        $"UpperCaseLetters: {passwordOptions.UpperCaseLetters}\n" +
+                        $"LowerCaseLetters: {passwordOptions.LowerCaseLetters}\n" +
+                        $"Quantity: {passwordOptions.Quantity}\n");
+
+        }
     }
 }
