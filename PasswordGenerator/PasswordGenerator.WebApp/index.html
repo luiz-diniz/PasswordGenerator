@@ -16,37 +16,38 @@
             <form>
                 <h5>Options</h5>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="numbers">
+                    <input class="form-check-input" type="checkbox" value="" id="numbers" onchange="ControlButton()">
                     <label class="form-check-label" for="numbers"> Numbers </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="specialCharacters">
+                    <input class="form-check-input" type="checkbox" value="" id="specialCharacters" onchange="ControlButton()">
                     <label class="form-check-label" for="specialCharacters"> Special Characters </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="upperCaseLetters">
+                    <input class="form-check-input" type="checkbox" value="" id="upperCaseLetters" onchange="ControlButton()">
                     <label class="form-check-label" for="upperCaseLetters"> Uppercase Letters </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="lowerCaseLetters">
+                    <input class="form-check-input" type="checkbox" value="" id="lowerCaseLetters" onchange="ControlButton()">
                     <label class="form-check-label" for="lowerCaseLetters"> Lowercase Letters </label>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="passwordSize">Password Size</label>
-                    <input type="text" class="form-control" id="passwordSize" placeholder="Ex: 0">
+                    <input type="number" class="form-control" id="passwordSize" placeholder="Ex: 0" onkeyup="ControlButton()">
                 </div>
                 <div class="form-group">
                     <label for="passwordQuantity">Quantity of passwords to be generated</label>
-                    <input type="text" class="form-control" id="passwordQuantity" placeholder="Ex: 2">
+                    <input type="number" class="form-control" id="passwordQuantity" placeholder="Ex: 2" onkeyup="ControlButton()">
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit" disabled>Generate</button>
+                <button id="generate" class="btn btn-primary btn-lg btn-block" type="submit" disabled>Generate</button>
                 <br>
                 <div class="form-group">
                     <textarea class="form-control" id="passwordsResult" readonly></textarea>
-                </div>
+                </div> 
             </form>            
         </div>
     </div>   
+    <script src="js/app.js"></script>
 </body>
 </html>
