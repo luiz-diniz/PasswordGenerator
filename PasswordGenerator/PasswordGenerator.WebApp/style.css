@@ -8,6 +8,10 @@ form{
     padding: 2rem;
 }
 
+textarea{
+    height: 10rem !important;
+}
+
 .container-content{
     width: 100vw;
     height: 100vh;
@@ -22,6 +26,15 @@ form{
     max-width: 40rem;
 }
 
-textarea{
-    height: 10rem !important;
+#loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-gif{
+    height: 4rem;
+    width: 4rem;
+    display: none;
 }

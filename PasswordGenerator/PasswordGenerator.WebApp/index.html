@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="IconPng.ico">
+    <link rel="icon" type="image/x-icon" href="resources/IconPng.ico">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>PasswordGenerator</title>
 </head>
@@ -35,14 +35,18 @@
                 <br>
                 <div class="form-group">
                     <label for="passwordSize">Password Size</label>
-                    <input type="number" class="form-control" id="passwordSize" placeholder="Ex: 10" onkeyup="ControlButton()">
+                    <input type="number" class="form-control" id="passwordSize" placeholder="Ex: 10" max="1000" onkeyup="ControlButton()">
                 </div>
+                
                 <div class="form-group">
                     <label for="passwordQuantity">Quantity of passwords to be generated</label>
-                    <input type="number" class="form-control" id="passwordQuantity" placeholder="Ex: 2" onkeyup="ControlButton()">
+                    <input type="number" class="form-control" id="passwordQuantity" placeholder="Ex: 2" max="100" onkeyup="ControlButton()">
                 </div>
                 <button id="generate" onclick="CallPasswordGenerator()" class="btn btn-primary btn-lg btn-block" type="button" disabled>Generate</button>
                 <br>
+                <!-- <div id="loading">
+                    <img src="resources/loading.gif" class="loading-gif" alt="loading gif">
+                </div> -->
                 <div class="form-group">
                     <textarea class="form-control" id="passwordsResult" readonly></textarea>
                 </div> 

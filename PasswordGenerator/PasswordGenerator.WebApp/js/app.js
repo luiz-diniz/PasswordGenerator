@@ -1,11 +1,12 @@
-var generateButton = document.getElementById('generate');
-var numbersCheckBox = document.getElementById('numbers');
-var specialCharactersCheckBox = document.getElementById('specialCharacters');
-var upperCaseLettersCheckBox = document.getElementById('upperCaseLetters');
-var lowerCaseLettersCheckBox = document.getElementById('lowerCaseLetters');
-var passwordSizeTextInput = document.getElementById('passwordSize');
-var passwordQuantityTextInput = document.getElementById('passwordQuantity');
-var passwordsResultTextArea = document.getElementById('passwordsResult');
+const generateButton = document.getElementById('generate');
+const numbersCheckBox = document.getElementById('numbers');
+const specialCharactersCheckBox = document.getElementById('specialCharacters');
+const upperCaseLettersCheckBox = document.getElementById('upperCaseLetters');
+const lowerCaseLettersCheckBox = document.getElementById('lowerCaseLetters');
+const passwordSizeTextInput = document.getElementById('passwordSize');
+const passwordQuantityTextInput = document.getElementById('passwordQuantity');
+const passwordsResultTextArea = document.getElementById('passwordsResult');
+//const loading = document.querySelector('.loading-gif');
 
 
 function ControlButton(){
@@ -24,7 +25,10 @@ function ControlButton(){
     }
 }
 
-function CallPasswordGenerator(){
+function CallPasswordGenerator(e){
+
+    //loading.style.display = 'block';
+
     var passwordOptions = new PasswordOptions(
         passwordSizeTextInput.value, 
         numbersCheckBox.checked,
@@ -37,19 +41,22 @@ function CallPasswordGenerator(){
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'https://passwordgeneratorapitest.azurewebsites.net/api/passwordgenerator/generate', true);
+    xhr.open('POST', 'myapi', true);
 
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) 
+        {
             var json = JSON.parse(xhr.responseText);
-            console.log(json);
             PopulatePasswordResultTextArea(json);
         }
-        else{
-            passwordsResultTextArea.value = 'Error obtaining password(s).';      
+        else
+        {
+            passwordsResultTextArea.value = 'Error obtaining password(s).';   
         }
+
+        //loading.style.display = 'none';   
     };
 
     xhr.send(jsonPassswordOptions);
