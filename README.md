@@ -6,7 +6,7 @@ This is a password generator
  * This app generate passwords based on the user's preference.
 
 ## How To Use - Web App
- * Open https://mypasswordgenerator.com.br/ (It should take a few seconds to generate the first one, due to Azure delay)
+ * Run the Angular WebApp and the Backend solution
  * Select which elements you want on the password
  * Define the size of the password
  * Define how many passwords you want to generate
