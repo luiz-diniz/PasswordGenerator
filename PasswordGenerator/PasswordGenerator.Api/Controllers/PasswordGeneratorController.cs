@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PasswordGenerator.Core;
 using PasswordGenerator.Models;
 using System;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Cors;
 
 namespace PasswordGenerator.Api.Controllers
 {
     [ApiController]
-    [Route("api/passwordgenerator")]
+    [Route("api/passwords")]
     public class PasswordGeneratorController : ControllerBase
     {
         private IPasswordGeneratorManager _passwordGenerator;
@@ -20,16 +19,17 @@ namespace PasswordGenerator.Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        [Route("generate")]
-        public IActionResult Generate(PasswordOptions passwordOptions)
+        [HttpGet]
+        public IActionResult Generate([FromQuery] PasswordOptions passwordOptions)
         {
             try
             {
                 _logger.LogInformation("Request coming from - " +
                                        $"IP: {Request.HttpContext.Connection.RemoteIpAddress}");
 
-                return Ok(_passwordGenerator.GeneratePassword(passwordOptions));
+                var result = _passwordGenerator.GeneratePassword(passwordOptions);
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
