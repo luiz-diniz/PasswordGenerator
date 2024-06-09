@@ -16,10 +16,10 @@ namespace PasswordGenerator.Models
         public bool SpecialCharacters { get; set; }
 
         [Required]
-        public bool UpperCaseLetters { get; set; }
+        public bool UpperCaseCharacters { get; set; }
 
         [Required]
-        public bool LowerCaseLetters { get; set; }
+        public bool LowerCaseCharacters { get; set; }
 
         [Required]
         [Range(1, 100)]

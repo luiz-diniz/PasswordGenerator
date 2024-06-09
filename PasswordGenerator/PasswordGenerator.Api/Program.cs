@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PasswordGenerator.Core;
+using PasswordGenerator.Core.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IPasswordGeneratorManager, PasswordGeneratorManager>();
+builder.Services.AddSingleton<IPasswordGenerator, PasswordGenerator.Core.PasswordGenerator>();
+builder.Services.AddSingleton<IStringGenerator, StringGenerator>();
 
 builder.Logging.AddLog4Net();
 

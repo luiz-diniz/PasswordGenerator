@@ -1,23 +1,24 @@
 ﻿using PasswordGenerator.Core;
+using PasswordGenerator.Core.Interfaces;
 using PasswordGenerator.Models;
 using System;
-using System.IO;
-using System.Reflection;
+using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PasswordGenerator.App
 {
     public partial class MainApp : Form
     {
-        private IPasswordGeneratorManager _passwordGenerator;
+        private IPasswordGenerator _passwordGenerator;
 
         public MainApp()
         {
             InitializeComponent();
             InitializeControllers();
 
-            _passwordGenerator = new PasswordGeneratorManager();
+            _passwordGenerator = new Core.PasswordGenerator(new StringGenerator());
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -38,35 +39,17 @@ namespace PasswordGenerator.App
         {
             try
             {
-                if (ValidateUserInput())
-                {
-                    var passwordOptions = FillPasswordOptions();
+                var passwordOptions = FillPasswordOptions();
 
-                    var password = _passwordGenerator.GeneratePassword(passwordOptions);
+                var password = _passwordGenerator.GeneratePasswords(passwordOptions);
 
-                    FillTextBox(password);
-                    btnCopy.Enabled = true;
-                }
+                FillTextBox(password);
+                btnCopy.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error generating password", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private bool ValidateUserInput()
-        {
-            if (!cbNumber.Checked && !cbSpecialCharacters.Checked && !cbUppercase.Checked && !cbLowercase.Checked)
-                throw new Exception("Select at least one option.");
-
-            var output = 0;
-            if (String.IsNullOrEmpty(txtPasswordSize.Text) || !int.TryParse(txtPasswordSize.Text, out output) || Convert.ToInt32(txtPasswordSize.Text) <= 0)
-                throw new Exception("Invalid number input.\nPassword size must be higher than zero.");
-
-            if(String.IsNullOrEmpty(txtQuantity.Text) || !int.TryParse(txtPasswordSize.Text, out output) || Convert.ToInt32(txtPasswordSize.Text) <= 0)
-                throw new Exception("Invalid number input.\nQuantity must be higher than zero.");
-
-            return true;
         }
 
         private PasswordOptions FillPasswordOptions()
@@ -76,14 +59,14 @@ namespace PasswordGenerator.App
             passwordOptions.Size = Convert.ToInt32(txtPasswordSize.Text);
             passwordOptions.Numbers = cbNumber.Checked;
             passwordOptions.SpecialCharacters = cbSpecialCharacters.Checked;
-            passwordOptions.UpperCaseLetters = cbUppercase.Checked;
-            passwordOptions.LowerCaseLetters = cbLowercase.Checked;
+            passwordOptions.UpperCaseCharacters = cbUppercase.Checked;
+            passwordOptions.LowerCaseCharacters = cbLowercase.Checked;
             passwordOptions.Quantity = Convert.ToInt32(txtQuantity.Text);
 
             return passwordOptions;
         }
 
-        private void FillTextBox(string[] passwords)
+        private void FillTextBox(IEnumerable<string> passwords)
         {
             txtPassword.Text = string.Empty;
 
