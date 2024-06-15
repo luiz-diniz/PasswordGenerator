@@ -4,7 +4,6 @@ using PasswordGenerator.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PasswordGenerator.App
@@ -21,19 +20,13 @@ namespace PasswordGenerator.App
             _passwordGenerator = new Core.PasswordGenerator(new StringGenerator());
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
-        {
-            GeneratePassword();
-        }
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(txtPassword.Text);
-        }
-
         public void InitializeControllers()
         {
             btnCopy.Enabled = false;
+            btnGenerate.Enabled = false;
         }
+
+        #region Private Methods
 
         private void GeneratePassword()
         {
@@ -44,6 +37,7 @@ namespace PasswordGenerator.App
                 var password = _passwordGenerator.GeneratePasswords(passwordOptions);
 
                 FillTextBox(password);
+
                 btnCopy.Enabled = true;
             }
             catch (Exception ex)
@@ -80,5 +74,73 @@ namespace PasswordGenerator.App
 
             txtPassword.Text = builder.ToString();
         }
+
+        private void ControlGenerateButtonState()
+        {
+            if (ValidStringNumberInput(txtQuantity.Text) && ValidStringNumberInput(txtPasswordSize.Text) && ValidOptionsChecked())
+            {
+                btnGenerate.Enabled = true;
+                return;
+            }
+
+            btnGenerate.Enabled = false;
+        }
+
+        private bool ValidStringNumberInput(string stringValue)
+        {
+            int.TryParse(stringValue, out var intValue);
+
+            return intValue > 0;
+        }
+
+        private bool ValidOptionsChecked()
+        {
+            return cbNumber.Checked || cbSpecialCharacters.Checked || cbLowercase.Checked || cbUppercase.Checked;
+        }
+
+        #endregion      
+
+        #region Events
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            GeneratePassword();
+        }
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPassword.Text);
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        private void txtPasswordSize_TextChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        private void cbLowercase_CheckedChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        private void cbUppercase_CheckedChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        private void cbSpecialCharacters_CheckedChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        private void cbNumber_CheckedChanged(object sender, EventArgs e)
+        {
+            ControlGenerateButtonState();
+        }
+
+        #endregion
     }
 }

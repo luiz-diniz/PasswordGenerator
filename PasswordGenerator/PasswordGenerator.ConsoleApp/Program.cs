@@ -67,11 +67,8 @@ namespace PasswordGenerator.ConsoleApp
                     value = true;
                     return;
                 }
-                else if(String.Equals(insertedValue, "n", StringComparison.OrdinalIgnoreCase))
-                {
-                    value = false;
-                    return;
-                }
+                else if(String.Equals(insertedValue, "n", StringComparison.OrdinalIgnoreCase))             
+                    return;             
                 
                 Console.WriteLine($"Invalid value inserted. Try again: {Environment.NewLine} ");
             } while (!validInput);
@@ -84,7 +81,7 @@ namespace PasswordGenerator.ConsoleApp
 
             do
             {
-                Int32.TryParse(Console.ReadLine(), out var quantity);
+                int.TryParse(Console.ReadLine(), out var quantity);
 
                 if(quantity > 0 && quantity <= 100)
                 {
