@@ -14,7 +14,7 @@ This is a password generator
  * That's it! :)
 
 ## How To Use - Windows App
- * Open the "Version" folder, execute the PasswordGenerator.exe
+ * Open the "Version" folder, execute the PasswordGenerator.App.exe
  * Select which elements you want on the password
  * Define the size of the password
  * Define how many passwords you want to generate
