@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PasswordGenerator.Core.Exceptions;
 using PasswordGenerator.Core.Interfaces;
 using PasswordGenerator.Models;
 using System;
@@ -38,8 +39,7 @@ namespace PasswordGenerator.Core
         {
             for (int i = 0; i < passwordOptions.Quantity; i++)
                 yield return Generate(passwordOptions);
-        }
-
+        }        
         private string Generate(PasswordOptions passwordOptions)
         {
             var generatedStringResult = new StringBuilder();
@@ -87,7 +87,7 @@ namespace PasswordGenerator.Core
                 throw new ArgumentOutOfRangeException(nameof(passwordOptions.Size), "Invalid password size. Password size must be between 1 and 100.");
 
             if (!passwordOptions.Numbers && !passwordOptions.UpperCaseCharacters && !passwordOptions.LowerCaseCharacters && !passwordOptions.SpecialCharacters)
-                throw new ArgumentOutOfRangeException("CharactersOptions", "All options are setted to false. Set at least one to true.");
+                throw new InvalidCharactersOptionsSelected("All options are setted to false. Set at least one to true.");
 
             LogPasswordOptions(passwordOptions);
         }
