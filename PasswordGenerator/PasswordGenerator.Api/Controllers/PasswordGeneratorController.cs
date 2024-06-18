@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using PasswordGenerator.Core.Interfaces;
 using PasswordGenerator.Models;
 using System;
+using System.Net;
 
 namespace PasswordGenerator.Api.Controllers
 {
@@ -24,15 +25,14 @@ namespace PasswordGenerator.Api.Controllers
         {
             try
             {
-                _logger.LogInformation($"Request coming from - IP: {Request.HttpContext.Connection.RemoteIpAddress}");
-
                 var result = _passwordGenerator.GeneratePasswords(passwordOptions);
 
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                _logger.LogError(ex, ex.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Error while generating passwords.");
             }
         }
     }
